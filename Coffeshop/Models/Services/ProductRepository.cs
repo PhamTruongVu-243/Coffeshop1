@@ -1,22 +1,21 @@
-﻿using Coffeshop.Models.Interfaces;
+﻿using Coffeshop.Data;
+using Coffeshop.Models.Interfaces;
 
 namespace Coffeshop.Models.Services
 {
     public class ProductRepository : IProductRepository
     {
-        private List<Product> ProductsList = new()
+        private readonly CoffeshopDbContext dbContext;
+
+        public ProductRepository(CoffeshopDbContext dbContext)
         {
-            new Product { Id = 1, Name = "America", Price = 25, Detail = "Name product", ImageUrl = "https://index.com" },
-            new Product { Id = 2, Name = "Vietnam", Price = 20, Detail = "Vietnamese product", ImageUrl = "https://index.com" },
-            new Product { Id = 3, Name = "United Kingdom", Price = 15, Detail = "UK product", ImageUrl = "https://index.com" }
-        };
+            this.dbContext = dbContext;
+        }
 
-        public IEnumerable<Product> GetAllProducts() => ProductsList;
+        public IEnumerable<Product> GetAllProducts() => dbContext.Products;
 
-        public Product? GetProductDetail(int id) =>
-            ProductsList.FirstOrDefault(p => p.Id == id);
+        public Product? GetProductDetail(int id) => dbContext.Products.FirstOrDefault(p => p.Id == id);
 
-        public IEnumerable<Product> GetTrendingProducts() =>
-            ProductsList.Where(p => p.IsTrendingProduct);
+        public IEnumerable<Product> GetTrendingProducts() => dbContext.Products.Where(p => p.IsTrendingProduct);
     }
 }

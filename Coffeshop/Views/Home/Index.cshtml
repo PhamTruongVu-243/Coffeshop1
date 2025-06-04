@@ -1,8 +1,44 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- Banner -->
+<section id="banner">
+    <div class="content">
+        <header>
+            <h2>Welcome to Coffee Shop</h2>
+            <p>The paradigm shift in your daily energy</p>
+        </header>
+        <p>We serve premium coffee that awakens your soul and brings joy to your moments. Explore our top-selling products and unique flavors.</p>
+        <ul class="actions">
+            <li><a asp-controller="Products" asp-action="Shop" class="button big">Shop Now</a></li>
+        </ul>
+    </div>
+    <span class="image object">
+        <img src="~/images/pic10.jpg" alt="Coffee Banner" />
+    </span>
+</section>
+
+<!-- Section: Features or Trending Products -->
+<section>
+    <header class="major">
+        <h2>Top Trending Coffees</h2>
+    </header>
+    <div class="features">
+        @* Bạn có thể truyền danh sách sản phẩm tại đây (sau khi làm bước populate trending products) *@
+        <article>
+            <span class="icon fa-coffee"></span>
+            <div class="content">
+                <h3>Vietnamese Drip</h3>
+                <p>Bold and deep flavor with traditional brewing style.</p>
+            </div>
+        </article>
+        <article>
+            <span class="icon fa-mug-hot"></span>
+            <div class="content">
+                <h3>Americano</h3>
+                <p>Light roast coffee for your morning refreshment.</p>
+            </div>
+        </article>
+    </div>
+</section>

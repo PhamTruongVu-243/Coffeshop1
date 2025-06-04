@@ -10,6 +10,13 @@
         <img width="100" src="@item.ImageUrl" />
         <h3>@item.Name</h3>
         <p>@item.Price.ToString("C")</p>
+        <div class="single-product">
+            <img width="100" src="@item.ImageUrl" />
+            <a asp-controller="Products" asp-action="Detail" asp-route-id="@item.Id" target="_blank">
+                <h3>@item.Name</h3>
+            </a>
+            <p>@item.Price.ToString("C")</p>
+        </div>
     }
 </body>
 </html>
